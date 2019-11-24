@@ -1,0 +1,22 @@
+version: '3'
+services: 
+  postgres:
+    image: 'postgres'
+    ports: 
+      - "5432:5432"
+    # use persistent data store
+    volumes: 
+      - "/Users/robertrichter/development/docker/postgres_data_store:/var/lib/postgresql/data"
+    environment: 
+      - POSTGRES_PASSWORD=postgres
+  spring-app:
+    # build: . sample if all files are wihtin the same folder
+    build: 
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    ports: 
+      - "9091:9091" # spring app
+      # - "5005:5005" # remote debugger not in use
+    # map config into container
+    volumes: 
+      - "/Users/robertrichter/development/java/spring_jpa/jpa/config:/app/config"
