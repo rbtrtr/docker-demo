@@ -1,17 +1,12 @@
 # build contaier
-FROM openjdk:8-jdk-alpine as build
+#FROM openjdk:8-jdk-alpine as build
+FROM robertrichter/maven-base:latest as build
 WORKDIR /app
 VOLUME /tmp
 
 # copy source code and pom file for maven
 COPY pom.xml .
 COPY src src
-
-# install maven
-RUN cd /tmp && \
-    wget http://ftp.halifax.rwth-aachen.de/apache/maven/maven-3/3.6.2/binaries/apache-maven-3.6.2-bin.tar.gz && \
-    tar xzvf apache-maven-3.6.2-bin.tar.gz && \
-    mv apache-maven-3.6.2 /opt/
 
 RUN /opt/apache-maven-3.6.2/bin/mvn install -DskipTests
 # move jar and extract for it deployment container

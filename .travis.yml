@@ -1,0 +1,15 @@
+# for docker
+sudo: required
+services:
+  - docker
+
+language: java
+jdk: openjdk8
+
+# nothing to do
+#before_install:
+#  -
+
+script:
+  - ./mvn clean install -B
+  - docker build . -f docker/Dockerfile -t robertrichter/docker-demo
