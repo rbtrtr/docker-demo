@@ -20,4 +20,4 @@ docker-build:
   script:
   - docker build . -f docker/Dockerfile -t robertrichter/docker-demo
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
-  - docker push registry.gitlab.com/robertrichter/docker-demo
+  - docker push robertrichter/docker-demo
