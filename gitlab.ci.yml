@@ -1,0 +1,23 @@
+image: docker:latest
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay
+  SPRING_PROFILES_ACTIVE: gitlab-ci
+
+stages:
+  - test
+  - build
+
+maven-test:
+  image: maven:3.6.2-jdk-8-openj9
+  stage: test
+  script: "mvn verify"
+
+docker-build:
+  stage: build
+  script:
+  - docker build . -f docker/Dockerfile -t robertrichter/docker-demo
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+  - docker push registry.gitlab.com/robertrichter/docker-demo
