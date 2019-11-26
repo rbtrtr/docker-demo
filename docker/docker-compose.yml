@@ -20,3 +20,5 @@ services:
     # map config into container
     volumes: 
       - "/Users/robertrichter/development/java/spring_jpa/jpa/config:/app/config"
+    depends_on: 
+      - postgres
