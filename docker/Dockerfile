@@ -13,6 +13,7 @@ RUN cd /tmp && \
     tar xzvf apache-maven-3.6.2-bin.tar.gz && \
     mv apache-maven-3.6.2 /opt/
 
+# compile code
 RUN /opt/apache-maven-3.6.2/bin/mvn install -DskipTests
 # move jar and extract for it deployment container
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
