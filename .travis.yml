@@ -8,11 +8,13 @@ jdk: openjdk8
 
 # test code including code coverage
 before_install:
-  - mvn verify
+  - mvn verify -B
 
 # build docker image 
 script:
   - docker build . -f docker/Dockerfile -t robertrichter/docker-demo
-  - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD hub.docker.com
+
+after
+  - echo "$DOCKER_HUB_PASSWORD" | docker login -u $DOCKER_HUB_USER -p --password-stdin hub.docker.com
   - docker push robertrichter/docker-demo
 
