@@ -50,7 +50,7 @@ public class AppTest {
 		List<String> players = soccerService.getAllTeamPlayers(1l);
 		
 		assertEquals(1l, players.size());
-		assertEquals("alex1", players.get(0));
+		assertEquals("alex", players.get(0));
 	}
 
 }
