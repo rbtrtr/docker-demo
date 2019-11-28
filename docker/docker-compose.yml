@@ -16,6 +16,10 @@ services:
       dockerfile: ./docker/Dockerfile
     ports: 
       - "9091:9091" # spring app
+    environment: 
+      - POSTGRES_HOSTNAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
       # - "5005:5005" # remote debugger not in use
     # map config into container
     volumes: 

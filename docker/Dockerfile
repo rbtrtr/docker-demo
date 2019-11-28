@@ -14,7 +14,7 @@ RUN cd /tmp && \
     mv apache-maven-3.6.2 /opt/
 
 # compile code
-RUN /opt/apache-maven-3.6.2/bin/mvn install -B -DskipTests
+RUN /opt/apache-maven-3.6.2/bin/mvn install -B -DskipTests -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
 # move jar and extract for it deployment container
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 

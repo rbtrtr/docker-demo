@@ -8,7 +8,7 @@ jdk: openjdk8
 
 # test code including code coverage
 before_install:
-  - mvn verify -B
+  - mvn verify -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
 
 # build docker image 
 script:
