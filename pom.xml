@@ -103,12 +103,9 @@
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
-					</execution>
-					<execution>
-						<id>default-prepare-agent-integration</id>
-						<goals>
-							<goal>prepare-agent-integration</goal>
-						</goals>
+						<configuration>
+							<dataFile>${basedir}/target/jacoco.exec</dataFile>
+						</configuration>
 					</execution>
 					<execution>
 						<id>default-report</id>
@@ -116,12 +113,9 @@
 						<goals>
 							<goal>report</goal>
 						</goals>
-					</execution>
-					<execution>
-						<id>default-report-integration</id>
-						<goals>
-							<goal>report-integration</goal>
-						</goals>
+						<configuration>
+							<dataFile>${basedir}/target/jacoco.exec</dataFile>
+						</configuration>
 					</execution>
 					<execution>
 						<id>default-check</id>
@@ -143,6 +137,7 @@
 									</limits>
 								</rule>
 							</rules>
+							<dataFile>${basedir}/target/jacoco.exec</dataFile>
 						</configuration>
 					</execution>
 				</executions>
