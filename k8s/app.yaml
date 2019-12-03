@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: spring-app
+  labels:
+    component: docker-sample
+spec:
+  containers:
+    - name: spring-app
+      image: robertrichter/docker-demo
+      ports:
+        - containerPort: 9091

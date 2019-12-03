@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-app-port
+spec:
+  type: NodePort
+  ports:
+    - port: 8091
+      targetPort: 9091
+      nodePort: 30139
+  selector:
+    component: docker-sample
