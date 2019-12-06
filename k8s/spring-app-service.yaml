@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-app-cluster-ip-service
+spec:
+  type: ClusterIP
+  selector:
+    component: spring-app
+  ports:
+    - port: 9091
+      targetPort: 9091

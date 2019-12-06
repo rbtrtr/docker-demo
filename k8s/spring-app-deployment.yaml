@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: spring-app
+  template:
+    metadata:
+      labels:
+        component: spring-app
+    spec:
+      containers:
+        - name: spring-app
+          image: robertrichter/docker-demo
+          ports:
+            - containerPort: 9091
+          env: 
+            - name: POSTGRES_HOSTNAME
+              value: postgres-cluster-ip-service
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              valueFrom: 
+                secretKeyRef:
+                  name: pgpassword
+                  key: POSTGRES_PASSWORD
+            - name: POSTGRES_PORT
+              value: '5432'
