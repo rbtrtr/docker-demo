@@ -33,7 +33,7 @@ COPY --from=build ${DEPENDENCY}/BOOT-INF/classes classes
 
 # run java app
 #ENTRYPOINT ["java","-cp","/app/lib/*:/app/classes", "de.rrob.spring.App"]
-CMD ["java","-cp","./lib/*:./classes", "de.rrob.spring.App"]
+CMD ["java","-cp","./lib/*:./classes", "de.rrob.spring.App", "-Dlogging.file.name=/app/config/log4j2.xml"]
 
 # expose port
 EXPOSE 9091

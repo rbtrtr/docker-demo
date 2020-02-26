@@ -12,11 +12,21 @@ spec:
       labels:
         component: spring-app
     spec:
+      volumes:
+        - name: logging-config
+          configMap:
+            name: log4j2-config-map
+            items:
+            - key: log4j2.xml
+              path: log4j2.xml
       containers:
         - name: spring-app
-          image: robertrichter/docker-demo
+          image: robertrichter/docker-demo:v1
           ports:
             - containerPort: 9091
+          volumeMounts:
+            - mountPath: /app/config/
+              name: logging-config
           env: 
             - name: POSTGRES_HOSTNAME
               value: postgres-cluster-ip-service
