@@ -1,3 +1,4 @@
+*.iml
 .factorypath
 .settings/
 .sts4-cache/
@@ -5,5 +6,6 @@
 .classpath
 .apt_generated*
 .project
+.idea/
 logs/
 target/
